@@ -23,7 +23,9 @@ class Currencies:
             value = currency_wrapper.find("strong")
 
             if code and value:
-                currencies[code.text.strip()] = value.text.strip()
+                code = code.text.strip()
+                value = int(float(value.text.strip().replace(",", ".")) * 1000000)
+                currencies[code] = value
 
         return currencies
 

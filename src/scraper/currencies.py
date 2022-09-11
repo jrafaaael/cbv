@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup as bs
 class Currencies:
     URL = "http://www.bcv.org.ve/"
 
-    def scrape(self):
+    def __scrape(self):
         page = requests.get(self.URL)
         soup = bs(page.content, "html.parser")
         dollar = soup.find("div", id="dolar")
@@ -13,8 +13,8 @@ class Currencies:
         currencies_wrapper = currencies_parent.find_all("div", recursive=False)
         return currencies_wrapper
 
-    def parse(self):
-        container = self.scrape()
+    def __parse(self):
+        container = self.__scrape()
         currencies = {}
 
         for currency_wrapper in container:
@@ -27,4 +27,4 @@ class Currencies:
         return currencies
 
     def get(self):
-        return self.parse()
+        return self.__parse()

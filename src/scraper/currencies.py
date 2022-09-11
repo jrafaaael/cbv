@@ -3,10 +3,10 @@ from bs4 import BeautifulSoup as bs
 
 
 class Currencies:
-    URL = "http://www.bcv.org.ve/"
+    __URL = "http://www.bcv.org.ve/"
 
     def __scrape(self):
-        page = requests.get(self.URL)
+        page = requests.get(self.__URL)
         soup = bs(page.content, "html.parser")
         dollar = soup.find("div", id="dolar")
         currencies_parent = dollar.parent

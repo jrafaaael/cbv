@@ -1,3 +1,4 @@
+from typing import Dict
 import requests
 from bs4 import BeautifulSoup as bs
 
@@ -13,7 +14,7 @@ class Currencies:
         currencies_wrapper = currencies_parent.find_all("div", recursive=False)
         return currencies_wrapper
 
-    def __parse(self):
+    def __parse(self) -> Dict[str, float]:
         container = self.__scrape()
         currencies = {}
 
@@ -26,5 +27,5 @@ class Currencies:
 
         return currencies
 
-    def get(self):
+    def get(self) -> Dict[str, float]:
         return self.__parse()

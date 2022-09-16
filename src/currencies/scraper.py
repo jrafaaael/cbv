@@ -1,37 +1,49 @@
-from typing import Dict, List
+from typing import Text
 import requests
-from bs4 import BeautifulSoup as bs
+from bs4 import BeautifulSoup as bs, Tag
 
 
 class Currencies:
     __URL = "http://www.bcv.org.ve/"
     __CONVERTION_OFFSET = 1000000
 
-    def __scrape(self):
+    def __init__(self) -> None:
+        self.__currency_wrapper = None
+        self.__page = None
+
+    def scrape(self):
         page = requests.get(self.__URL)
         soup = bs(page.content, "html.parser")
-        dollar = soup.find("div", id="dolar")
-        currencies_parent = dollar.parent
-        currencies_wrapper = currencies_parent.find_all("div", recursive=False)
-        return currencies_wrapper
 
-    def __parse(self) -> List[Dict[str, int]]:
-        container = self.__scrape()
-        currencies = []
+        self.__page = soup
+        return self
 
-        for currency_wrapper in container:
-            code = currency_wrapper.find("span")
-            value = currency_wrapper.find("strong")
+    def get(self, id: Text = 'dolar'):
+        page = self.__page
 
-            if code and value:
-                code = code.text.strip()
-                value = int(
-                    float(value.text.strip().replace(",", "."))
-                    * self.__CONVERTION_OFFSET
-                )
-                currencies.append({code: value})
+        if not (isinstance(page, bs)):
+            raise Exception("You need scrape the page first")
 
-        return currencies
+        currency_wrapper = page.find("div", id=id)
 
-    def get(self) -> List[Dict[str, int]]:
-        return self.__parse()
+        self.__currency_wrapper = currency_wrapper
+        return self
+
+    def parse(self):
+        currency_wrapper = self.__currency_wrapper
+
+        if not isinstance(currency_wrapper, Tag):
+            raise Exception("Invalid element")
+
+        code = currency_wrapper.find("span")
+        value = currency_wrapper.find("strong")
+
+        if not (code and value):
+            raise Exception("Currency not found")
+
+        code = code.text.strip()
+        value = int(
+            float(value.text.strip().replace(",", ".")) * self.__CONVERTION_OFFSET
+        )
+
+        return (code, value)

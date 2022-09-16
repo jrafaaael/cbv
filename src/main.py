@@ -1,9 +1,9 @@
 from currencies.scraper import Currencies
-from constants.currencies import SYMBOLS
+from currencies.names import CURRENCY_NAMES
 
 if __name__ == "__main__":
     page = Currencies().scrape()
 
-    for symbol in SYMBOLS:
-        code, value = page.get(symbol).parse()
-        print(code, value)
+    for currency_name in CURRENCY_NAMES:
+        code, value = page.get(currency_name).parse()
+        print(currency_name, code, value)

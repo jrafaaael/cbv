@@ -1,10 +1,9 @@
 from currencies.scraper import Currencies
-
-SYMBOLS = ["dolar", "euro", "yuan", "lira", "rublo"]
+from constants.currencies import SYMBOLS
 
 if __name__ == "__main__":
     page = Currencies().scrape()
 
     for symbol in SYMBOLS:
-        currency = page.get(symbol).parse()
-        print(currency)
+        code, value = page.get(symbol).parse()
+        print(code, value)

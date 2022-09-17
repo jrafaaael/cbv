@@ -1,5 +1,6 @@
 from currencies.scraper import Currencies
 from currencies.names import CURRENCY_NAMES
+import setup
 
 if __name__ == "__main__":
     page = Currencies().scrape()

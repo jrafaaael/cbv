@@ -19,3 +19,4 @@ urllib3==1.26.12
 supabase==0.5.8
 python-dotenv==0.21.0
 pytz==2022.2.1
+python-crontab==2.6.0

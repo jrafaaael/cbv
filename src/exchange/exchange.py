@@ -1,6 +1,5 @@
 import requests
 from bs4 import BeautifulSoup as bs, ResultSet, Tag
-import os
 
 
 __URL = "https://www.bcv.org.ve/"
@@ -8,13 +7,8 @@ __CONVERTION_OFFSET = 1000000
 
 
 def __scrape():
-    # page = requests.get(__URL, verify=False)
-    # soup = bs(page.content, "html.parser")
-
-    with open(f"{os.getcwd()}/bcv.html") as p:
-        page = p.read()
-
-    soup = bs(page, "html.parser")
+    page = requests.get(__URL, verify=False)
+    soup = bs(page.content, "html.parser")
 
     return soup
 

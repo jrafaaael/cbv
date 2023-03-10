@@ -1,6 +1,8 @@
 name: Scrape and store data from cbv hourly
 
 on:
+  workflow_dispatch:
+
   schedule:
     - cron: "0 */1 * * *"
 

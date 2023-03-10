@@ -16,5 +16,4 @@ soupsieve==2.3.2.post1
 tomli==2.0.1
 typing_extensions==4.3.0
 urllib3==1.26.12
-python-dotenv==0.21.0
 pytz==2022.2.1

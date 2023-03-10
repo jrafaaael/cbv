@@ -15,7 +15,7 @@ class Database:
 
     def __save(self, data):
         with open(self.__db_path, "w+") as db:
-            data = json.dumps(data)
+            data = json.dumps(data, indent=2, separators=(",", ": "))
             db.write(data)
             db.close()
 

@@ -30,4 +30,4 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
           git diff --quiet && git diff --staged --quiet || git commit -am "[bot] update bcv rate"
-          git push origin main
+          git push origin master

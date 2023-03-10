@@ -24,3 +24,9 @@ jobs:
 
       - name: Run scraper
         run: python3 src/main.py
+
+      - name: Commit and push
+        run: |
+          git config user.name cbv-bot
+          git diff --quiet && git diff --staged --quiet || git commit -am "[bot] update bcv rate"
+          git push origin main

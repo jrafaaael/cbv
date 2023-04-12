@@ -1,4 +1,4 @@
-name: Re-deploy api on db change
+name: deploy api on db change
 
 on:
   workflow_dispatch:

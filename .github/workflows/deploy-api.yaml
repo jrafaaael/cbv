@@ -19,6 +19,9 @@ jobs:
         with:
           node-version: 18.x
 
+      - name: Go to Nodejs api dir
+        run: cd api
+
       - name: Install dependencies
         run: npm i
 

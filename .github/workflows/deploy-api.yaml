@@ -1,0 +1,28 @@
+name: Deploy api db change
+
+on:
+  workflow_dispatch:
+
+  push:
+    paths:
+      - "**.json"
+
+jobs:
+  update-api:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Nodejs
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+
+      - name: Install dependencies
+        run: npm i
+
+      - name: Publish
+        uses: cloudflare/wrangler-action@2.0.0
+        with:
+          apiToken: ${{ secrets.CF_API_TOKEN }}

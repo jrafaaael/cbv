@@ -21,11 +21,11 @@ jobs:
           node-version: 18.x
 
       - name: Install dependencies
-        run: |
-          cd api
-          npm ci
+        working-directory: ./api
+        run: npm ci
 
       - name: Publish
         uses: cloudflare/wrangler-action@2.0.0
         with:
+          working-directory: ./api
           apiToken: ${{ secrets.CF_API_TOKEN }}

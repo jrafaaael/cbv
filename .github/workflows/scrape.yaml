@@ -20,11 +20,11 @@ jobs:
           cache: "pip"
 
       - name: Install dependencies
-        run: |
-          cd scraper
-          pip install -r requirements.txt
+        working-directory: ./scraper
+        run: pip install -r requirements.txt
 
       - name: Run scraper
+        working-directory: ./scraper
         run: python3 src/main.py
 
       - name: Commit and push

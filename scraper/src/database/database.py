@@ -1,11 +1,15 @@
 import json
 from typing import List
 from os import getcwd
+from pathlib import Path
 
 
 class Database:
     def __init__(self, db_name: str):
-        self.__db_path = f"{getcwd()}/database/{db_name}.json"
+        base_path = Path(getcwd()).parent.absolute()
+        path = f"{base_path}/database/{db_name}.json"
+
+        self.__db_path = path
 
     def __open(self):
         with open(self.__db_path) as db:

@@ -15,12 +15,14 @@ if __name__ == "__main__":
         if not currency:
             currency = db.create({"id": code, "name": name, "rates": []})
 
+        value_with_offset = int(value * CONVERTION_OFFSET)
+
         if (
             len(currency["rates"]) == 0
-            or not currency["rates"][-1]["value"] == value
+            or not currency["rates"][-1]["value"] == value_with_offset
         ):
             db.update(
                 "rates",
-                {"value": int(value * CONVERTION_OFFSET), "updated_at": now},
+                {"value": value_with_offset, "updated_at": now},
                 where={"field": "id", "value": code},
             )

@@ -1,11 +1,11 @@
-name: deploy api on db change
+name: deploy api on push to master branch
 
 on:
   workflow_dispatch:
 
   push:
-    paths:
-      - "**.json"
+    branches:
+      - master
 
 jobs:
   update-api:

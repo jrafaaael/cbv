@@ -21,6 +21,6 @@ if __name__ == "__main__":
         ):
             db.update(
                 "rates",
-                {"value": value * CONVERTION_OFFSET, "updated_at": now},
+                {"value": int(value * CONVERTION_OFFSET), "updated_at": now},
                 where={"field": "id", "value": code},
             )

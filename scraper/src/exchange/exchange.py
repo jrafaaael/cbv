@@ -3,7 +3,6 @@ from bs4 import BeautifulSoup as bs, ResultSet, Tag
 
 
 __URL = "https://www.bcv.org.ve/"
-__CONVERTION_OFFSET = 1000000
 
 
 def __scrape():
@@ -19,7 +18,7 @@ def get_exchanges():
     exchanges = [
         (
             code.text.strip(),
-            int(float(value.text.strip().replace(",", ".")) * __CONVERTION_OFFSET),
+            float(value.text.strip().replace(",", ".")),
             name["id"],
         )
         for wrapper in exchanges_wrapper

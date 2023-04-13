@@ -2,6 +2,8 @@ from exchange import get_exchanges
 from database import Database
 from datetime import datetime, timezone
 
+CONVERTION_OFFSET = 1000000
+
 if __name__ == "__main__":
     db = Database("exchanges")
     exchanges = get_exchanges()
@@ -19,6 +21,6 @@ if __name__ == "__main__":
         ):
             db.update(
                 "rates",
-                {"value": value, "updated_at": now},
+                {"value": value * CONVERTION_OFFSET, "updated_at": now},
                 where={"field": "id", "value": code},
             )

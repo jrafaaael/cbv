@@ -9,29 +9,9 @@ Since 2022, is needed that every commerce bill its products or services based on
 
 ## Project structure
 ```
-├── api/                     # cloudflare workers api build with hono
+├── api/                     # nodejs api build with hono
 ├── database/                # json file that works as db
 ├── scraper/                 # python script to scrape BCV webpage and store exchange rates
-```
-
-### Scraper
-Built with python, beautifulsoup4 and requests
-
-#### Install
-```bash
-# On project root
-cd scraper
-pip3 install -r requirements.txt
-```
-
-### API
-Built with nodejs, cloudflare workers, wrangler and hono
-
-#### Install
-```bash
-# On project root
-cd api
-npm install
 ```
 
 ## To-do

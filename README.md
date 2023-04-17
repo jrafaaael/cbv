@@ -31,7 +31,7 @@ Built with nodejs, cloudflare workers, wrangler and hono
 ```bash
 # On project root
 cd api
-npm install # or yarn install or pnpm install
+npm install
 ```
 
 ## To-do

@@ -12,6 +12,6 @@ Built with nodejs and hono. Deployed on cloudflare workers
 | `npm run test`   | 😅                                                                         |
 
 ## API endpoints
-GET `/`: Returns last exchange rates update
+GET `/`: Return latest update of exchange rates
 
-GET `/:currencyIdOrName`: Returns last exchange rates update by currency ID or name.
+GET `/:currencyIdOrName`: Return latest update of exchange rates given a currency ID or name

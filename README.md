@@ -16,23 +16,21 @@ Since 2022, is needed that every commerce bill its products or services based on
 
 ### Scraper
 Built with python, beautifulsoup4 and requests.
-
 #### Install
-**On project root**
 ```bash
+# On project root
 cd scraper
 pip3 install -r requirements.txt
 ```
 
 ### API
 Built with nodejs, cloudflare workers, wrangler and hono
-
 #### Install
-**On project root**
 ```bash
+# On project root
 cd api
 npm install # or yarn install or pnpm install
 ```
 
 ## To-do
-[ ] Get value by date from API (via query params)
+- [ ] Get value by date from API (via query params)

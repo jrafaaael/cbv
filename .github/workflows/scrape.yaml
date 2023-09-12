@@ -35,3 +35,10 @@ jobs:
           git config user.email 'github-actions[bot]@users.noreply.github.com'
           git diff --quiet && git diff --staged --quiet || git commit -am "[bot] update bcv rate"
           git push origin master
+
+      - name: Bump version
+        uses: anothrNick/github-tag-action@1.64.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          WITH_V: true
+          VERBOSE: true
